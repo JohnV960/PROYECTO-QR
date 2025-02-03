@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Oculta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .tabla-info, .tabla-mantenimiento {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .tabla-info th, .tabla-info td,
+        .tabla-mantenimiento th, .tabla-mantenimiento td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+        }
+        .tabla-info th, .tabla-mantenimiento th {
+            background-color: #f2f2f2;
+        }
+        .btn-ingresar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-ingresar:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>INGELEC</header>
+    
+    <h2>Información Técnica de Apooler</h2>
+    
+    <table class="tabla-info">
+        <thead>
+            <tr>
+                <th>Especificación</th>
+                <th>Valor</th>
+                <th>Unidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Potencia</td>
+                <td>1500</td>
+                <td>W</td>
+            </tr>
+            <tr>
+                <td>Rendimiento</td>
+                <td>95</td>
+                <td>%</td>
+            </tr>
+            <tr>
+                <td>Temperatura de Operación</td>
+                <td>0 - 40</td>
+                <td>°C</td>
+            </tr>
+            <tr>
+                <td>Voltaje</td>
+                <td>220</td>
+                <td>V</td>
+            </tr>
+            <tr>
+                <td>Consumo</td>
+                <td>0.5</td>
+                <td>A</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Trabajos de Mantenimiento</h2>
+    
+    <table class="tabla-mantenimiento">
+        <thead>
+            <tr>
+                <th>Trabajo</th>
+                <th>Fecha de Trabajo</th>
+                <th>Fecha de Próximo Trabajo</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Revisión de Sistema Eléctrico</td>
+                <td id="fechaTrabajo1">2024-12-10</td>
+                <td>2025-03-10</td>
+                <td id="estado1">Pendiente</td>
+            </tr>
+            <tr>
+                <td>Cambio de Filtros</td>
+                <td>2024-11-05</td>
+                <td>2025-02-05</td>
+                <td id="estado2">Pendiente</td>
+            </tr>
+            <tr>
+                <td>Inspección General</td>
+                <td>2024-10-15</td>
+                <td>2025-01-15</td>
+                <td id="estado3">Pendiente</td>
+            </tr>
+            <tr>
+                <td>Ajuste de Temperatura</td>
+                <td>2024-09-20</td>
+                <td>2025-02-20</td>
+                <td id="estado4">Pendiente</td>
+            </tr>
+            <tr>
+                <td>Limpieza de Componentes</td>
+                <td>2024-08-30</td>
+                <td>2025-01-30</td>
+                <td id="estado5">Pendiente</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="btn-ingresar" onclick="window.location.href='ingresar_mantenimiento.html'">Ingresar Datos de Mantenimiento</button>
+
+    <script>
+        // Recuperar los datos del mantenimiento desde localStorage y actualizar el estado
+        const estadoTrabajo = localStorage.getItem('estadoTrabajo');
+        const quienRealizo = localStorage.getItem('quienRealizo');
+        const fechaTrabajo = localStorage.getItem('fechaTrabajo');
+        
+        if (estadoTrabajo) {
+            // Actualizamos el estado en la tabla
+            document.getElementById('estado' + estadoTrabajo).textContent = "Realizado por " + quienRealizo + " el " + fechaTrabajo;
+        }
+    </script>
+</body>
+</html>

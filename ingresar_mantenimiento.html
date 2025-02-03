@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar Datos de Mantenimiento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .form-container {
+            width: 50%;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        input, select, button {
+            padding: 8px;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Ingresar Datos de Mantenimiento</h2>
+    
+    <div class="form-container">
+        <form id="formMantenimiento">
+            <label for="trabajo">Seleccionar Trabajo de Mantenimiento</label>
+            <select id="trabajo" name="trabajo" required>
+                <option value="1">Revisión de Sistema Eléctrico</option>
+                <option value="2">Cambio de Filtros</option>
+                <option value="3">Inspección General</option>
+                <option value="4">Ajuste de Temperatura</option>
+                <option value="5">Limpieza de Componentes</option>
+            </select>
+            
+            <label for="quienRealizo">Nombre de quien realizó el trabajo</label>
+            <input type="text" id="quienRealizo" name="quienRealizo" required>
+
+            <button type="submit">Guardar Datos</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('formMantenimiento').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obtener los valores del formulario
+            const trabajo = document.getElementById('trabajo').value;
+            const quienRealizo = document.getElementById('quienRealizo').value;
+            const fechaTrabajo = new Date().toLocaleDateString(); // Obtener fecha actual
+
+            // Guardar los datos en localStorage
+            localStorage.setItem('estadoTrabajo', trabajo);
+            localStorage.setItem('quienRealizo', quienRealizo);
+            localStorage.setItem('fechaTrabajo', fechaTrabajo);
+
+            // Redirigir a la página principal
+            window.location.href = 'oculta.html';
+        });
+    </script>
+
+</body>
+</html>
